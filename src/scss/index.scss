@@ -21,6 +21,11 @@ body {
   font-family: $f;
 }
 
+#root {
+  height: 100%;
+  width: 100%;
+}
+
 .container {
   height: 100%;
   width: 100%;
