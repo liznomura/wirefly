@@ -1,0 +1,20 @@
+{
+  "container": {
+    "width": 600,
+    "height": 600
+  },
+  "rows": [
+    {
+      "name": "Body",
+      "height": 250,
+      "children": [
+        {
+          "type": "div"
+        },
+        {
+          "type": "img"
+        }
+      ]
+    }
+  ]
+}
