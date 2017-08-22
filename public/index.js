@@ -1,21 +1,18 @@
 /*jshint esversion: 6*/
-console.log('hello');
-
 const el = document.querySelectorAll('.el');
-const toolbar = document.getElementById('toolbar');
-const canvas = document.getElementById('canvas');
-const imageDiv = document.getElementById('image');
-const headerDiv = document.getElementById('header');
+const rows = document.querySelectorAll('.row');
 
 el.forEach(element => {
   element.addEventListener('dragstart', handleDragStart, false);
   element.addEventListener('dragend', handleDragEnd, false);
 });
 
-canvas.addEventListener('dragenter', handleDragEnter, false);
-canvas.addEventListener('dragleave', handleDragLeave, false);
-canvas.addEventListener('dragover', handleDragOver, false);
-canvas.addEventListener('drop', handleDrop, false);
+rows.forEach(row => {
+  row.addEventListener('dragenter', handleDragEnter, false);
+  row.addEventListener('dragleave', handleDragLeave, false);
+  row.addEventListener('dragover', handleDragOver, false);
+  row.addEventListener('drop', handleDrop, false);
+});
 
 function handleDragStart(e) {
   this.style.opacity = '0.4';
@@ -28,7 +25,7 @@ function handleDragEnd(e) {
 }
 
 function handleDragOver(e) {
-  if(e.preventDefault) {
+  if (e.preventDefault) {
     e.preventDefault();
   }
   e.dataTransfer.dropEffect = 'copy';
@@ -44,33 +41,33 @@ function handleDragLeave(e) {
 }
 
 function handleDrop(e) {
-  if(e.stopPropagation) {
+  if (e.stopPropagation) {
     e.stopPropagation();
   }
 
   let data = e.dataTransfer.getData('text');
-
   switch (data) {
-    case 'header':
-    let headerEl = document.createElement('div');
-    headerEl.className = 'header';
-    headerEl.innerText = 'this is a copy header';
-
-    canvas.appendChild(headerEl);
-    break;
+    case 'div':
+      createEl(e, 'div');
+      break;
 
     case 'image':
-    let imageEl = document.createElement('div');
-    imageEl.className = 'image';
-    imageEl.innerText = 'this is a copy image';
-
-    canvas.appendChild(imageEl);
-    break;
+      createEl(e, 'div');
+      break;
 
     default:
-    console.log('bleh');
+      console.log('bleh');
   }
 
   this.classList.remove('over');
   return false;
+}
+
+function createEl(e, el) {
+  let element = document.createElement(el);
+  element.className = el;
+  element.style.height = '100%';
+  element.classList.add('flex-container');
+
+  e.target.appendChild(element);
 }
