@@ -31,7 +31,7 @@ export default App;`;
 
   it('generator.createChildren() should render an array of react component strings', () => {
     const expected = [
-      `import React from 'react';
+`import React from 'react';
 
 const Header = (props) => {
   return (
@@ -41,7 +41,8 @@ const Header = (props) => {
 };
 
 export default Header;`,
-    `import React from 'react';
+
+`import React from 'react';
 
 const Logo = (props) => {
   return (
@@ -51,7 +52,8 @@ const Logo = (props) => {
 };
 
 export default Logo;`,
-    `import React from 'react';
+
+`import React from 'react';
 
 const Button = (props) => {
   return (
@@ -61,7 +63,8 @@ const Button = (props) => {
 };
 
 export default Button;`,
-    `import React from 'react';
+
+`import React from 'react';
 
 const Body = (props) => {
   return (
@@ -71,7 +74,8 @@ const Body = (props) => {
 };
 
 export default Body;`,
-    `import React from 'react';
+
+`import React from 'react';
 
 const Image = (props) => {
   return (
