@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-const rootJson = require('./fixtures/rootComponent.json');
+const wireFrameJson = require('./fixtures/wireFrame.json');
 const generator = require('../js/generator.js');
 
 describe('React Component Generator', () => {
@@ -23,7 +23,12 @@ class App extends Component {
 }
 
 export default App;`;
+
   it('generator.createRoot() should render the root component', () => {
-    expect(JSON.stringify(generator.createRoot(rootJson))).to.equal(JSON.stringify(rootComponent));
+    expect(JSON.stringify(generator.createRoot(wireFrameJson))).to.equal(JSON.stringify(rootComponent));
   });
+
+  it('generator.createChildren() should render an array of react component strings', () => {
+    expect(generator.createChildren())
+  })
 })

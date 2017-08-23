@@ -1,0 +1,35 @@
+{
+  "container": {
+    "width": 600,
+    "height": 600
+  },
+  "rows": [
+      {
+      "name": "Header",
+      "height": 250,
+      "children": [
+        {
+          "name": "Logo",
+          "height": 200,
+          "children": []
+        },
+        {
+          "name": "Button",
+          "height": 200,
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "Body",
+      "height": 250,
+      "children": [
+        {
+          "name": "Image",
+          "height": 200,
+          "children": []
+        }
+      ]
+    }
+  ]
+}
