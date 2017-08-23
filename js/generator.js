@@ -26,7 +26,7 @@ function recurse(comp, template) {
   if(comp.length <= 0) return comp;
 
   return comp.map(child => {
-    let str = template({ name: child.name });
+    let str = template({ child });
     return [str].concat(...recurse(child.children, template));
   })
 }

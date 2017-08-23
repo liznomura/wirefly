@@ -32,10 +32,14 @@ export default App;`;
   it('generator.createChildren() should render an array of react component strings', () => {
     const expected = [
 `import React from 'react';
+import Logo from './Logo';
+import Button from './Button';
 
 const Header = (props) => {
   return (
     <div>
+      <Logo />
+      <Button />
     </div>
   );
 };
@@ -65,10 +69,12 @@ const Button = (props) => {
 export default Button;`,
 
 `import React from 'react';
+import Image from './Image';
 
 const Body = (props) => {
   return (
     <div>
+      <Image />
     </div>
   );
 };
@@ -87,6 +93,7 @@ const Image = (props) => {
 export default Image;`
     ];
     const actual = generator.createComponents(wireFrameJson.rows, childTemplate);
+    console.log(actual)
 
     expect(actual).to.deep.equal(expected);
   })
