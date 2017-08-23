@@ -4,6 +4,11 @@
     "height": 600
   },
   "rows": [
+      {
+      "name": "Header",
+      "height": 250,
+      "children": []
+    },
     {
       "name": "Body",
       "height": 250,
