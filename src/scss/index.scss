@@ -28,8 +28,9 @@ body {
 
 .container {
   height: 100%;
-  width: 100%;
+  width: 70%;
   display: flex;
+  margin: 0 auto;
 }
 
 .toolbar {
@@ -37,25 +38,19 @@ body {
   justify-content: center;
   align-content: flex-start;
   flex-wrap: wrap;
-  width: 150px;
+  width: 30%;
   height: auto;
   border: 1px solid red;
   padding: 10px;
 }
 
-.divTool {
+.tool {
   margin: 10px;
-  width: 80%;
+  width: 60%;
   height: 80px;
   border: 1px solid;
 }
 
-.imageTool {
-  margin: 10px;
-  width: 80%;
-  height: 80px;
-  border: 1px solid;
-}
 
 .div {
   border: 1px solid black;
