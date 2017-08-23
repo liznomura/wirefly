@@ -1,16 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { updateRowHeight } from '../../actions';
 
 class Rows extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      rows : {
-        name: this.props.classType,
-        height : '',
-        children : []
-      }
-    };
 
     this.handleDragOver = this.handleDragOver.bind(this);
     this.handleDragEnter = this.handleDragEnter.bind(this);
@@ -38,9 +32,15 @@ class Rows extends Component {
     if (e.stopPropagation) {
       e.stopPropagation();
     }
-    let data = e.dataTransfer.getData('text');
+    // let data = e.dataTransfer.getData('text');
     e.target.classList.remove('over');
     return false;
+  }
+
+  componentDidMount() {
+    let name = this.rowDiv.dataset.name;
+    let height = this.rowDiv.offsetHeight;
+    this.props.updateRowHeight(name, height);
   }
 
   render() {
@@ -48,7 +48,9 @@ class Rows extends Component {
 
     return (
       <div
+        ref={div => {this.rowDiv = div;}}
         className={classList}
+        data-name={this.props.classType}
         onDragOver={this.handleDragOver}
         onDragEnter={this.handleDragEnter}
         onDragLeave={this.handleDragLeave}
@@ -57,6 +59,23 @@ class Rows extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    rows: state.rows
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    updateRowHeight: (name, height) => {
+      dispatch(updateRowHeight(name, height));
+    }
+  };
+};
+
+Rows = connect(mapStateToProps, mapDispatchToProps)(Rows);
+
 
 export default Rows;
 
