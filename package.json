@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon processReq.js",
+    "test": "./node_modules/mocha/bin/mocha test --watch"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,14 @@
   "bugs": {
     "url": "https://github.com/bkkwok/wirefly/issues"
   },
-  "homepage": "https://github.com/bkkwok/wirefly#readme"
+  "homepage": "https://github.com/bkkwok/wirefly#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "handlebars": "^4.0.10"
+  },
+  "devDependencies": {
+    "chai": "^4.1.1",
+    "mocha": "^3.5.0"
+  }
 }
