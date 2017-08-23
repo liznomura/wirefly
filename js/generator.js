@@ -15,15 +15,23 @@ const createChildren = ({ rows }) => {
   });
 }
 
-const getRows = () => {
+function createComponents(comp, template) { //component
 
+  return recurse(comp, template).reduce((arr, curr) => {
+    return arr.concat(curr);
+  })
 }
 
-const compFileName = (name) => {
-  return `./${name}.js`;
+function recurse(comp, template) {
+  if(comp.length <= 0) return comp;
+
+  return comp.map(child => {
+    let str = template({ name: child.name });
+    return [str].concat(...recurse(child.children, template));
+  })
 }
 
 module.exports = {
   createRoot,
-
+  createComponents
 };

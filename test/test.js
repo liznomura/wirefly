@@ -1,6 +1,7 @@
 const expect = require('chai').expect;
 const wireFrameJson = require('./fixtures/wireFrame.json');
 const generator = require('../js/generator.js');
+const childTemplate = require('../js/templates/child.js');
 
 describe('React Component Generator', () => {
   const rootComponent = `import React, { Component } from 'react';
@@ -29,6 +30,60 @@ export default App;`;
   });
 
   it('generator.createChildren() should render an array of react component strings', () => {
-    expect(generator.createChildren())
+    const expected = [
+      `import React from 'react';
+
+const Header = (props) => {
+  return (
+    <div>
+    </div>
+  );
+};
+
+export default Header;`,
+    `import React from 'react';
+
+const Logo = (props) => {
+  return (
+    <div>
+    </div>
+  );
+};
+
+export default Logo;`,
+    `import React from 'react';
+
+const Button = (props) => {
+  return (
+    <div>
+    </div>
+  );
+};
+
+export default Button;`,
+    `import React from 'react';
+
+const Body = (props) => {
+  return (
+    <div>
+    </div>
+  );
+};
+
+export default Body;`,
+    `import React from 'react';
+
+const Image = (props) => {
+  return (
+    <div>
+    </div>
+  );
+};
+
+export default Image;`
+    ];
+    const actual = generator.createComponents(wireFrameJson.rows, childTemplate);
+
+    expect(actual).to.deep.equal(expected);
   })
 })
