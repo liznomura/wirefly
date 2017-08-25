@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { addContainer, addDiv } from '../../actions';
 import Container from '../../components/container.js';
 
-class DivBase extends Component {
-  constructor(props) {
-    super(props);
+class BaseTool extends Component {
+  constructor() {
+    super();
 
     this.handleClick = this.handleClick.bind(this);
   }
@@ -26,7 +26,7 @@ class DivBase extends Component {
 
   render() {
     return (
-      <div className="canvas" onClick={this.handleClick}>
+      <div className="baseTool" onClick={this.handleClick}>
         {this.props.containers.map(container =>
           <Container key={container.id} containerId={container.id} handleClick={this.handleClick}/>
         )}
@@ -53,6 +53,6 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-DivBase = connect(mapStateToProps, mapDispatchToProps)(DivBase);
+BaseTool = connect(mapStateToProps, mapDispatchToProps)(BaseTool);
 
-export default DivBase;
+export default BaseTool;

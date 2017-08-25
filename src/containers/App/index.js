@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Toolbar from '../Toolbar';
-import DivBase from '../DivBase';
+import BaseTool from '../DivBase';
 
 class App extends Component {
 
@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <div className="app">
         <Toolbar />
-        <DivBase />
+        <BaseTool />
       </div>
     );
   }
