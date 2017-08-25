@@ -1,4 +1,4 @@
-import { SET_TOOL } from '../actions';
+import { SET_TOOL, ADD_ELEMENT } from '../actions';
 
 const initialState = {
   tool: '',
@@ -11,14 +11,14 @@ const initialState = {
       properties: {},
       children: [
         {
-          id: 2,
+          id: 29,
           type: 'container',
           width: '100%',
           height: '100%',
           properties: {},
           children: [
             {
-              id: 3,
+              id: 30,
               type: 'div',
               width: '100%',
               height: '100%',
@@ -33,12 +33,14 @@ const initialState = {
 };
 
 const wireflyReducer = (state = initialState, action) => {
+
   switch (action.type) {
-    // case ADD_CONTAINER:
-    //   return Object.assign({}, state, {
-    //     tool: '',
-    //     containers: [...state.containers, action.container]
-    //   });
+    case ADD_ELEMENT:
+
+      // return Object.assign({}, state, {
+      //   tool: '',
+      //   containers: [...state.containers, action.container]
+      // });
 
     case SET_TOOL:
       return Object.assign({}, state, { tool: action.tool });

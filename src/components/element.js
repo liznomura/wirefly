@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import getTreeNode from '../helpers';
+import { addElement } from '../actions';
 
 class Element extends Component {
   constructor(props) {
@@ -10,7 +12,8 @@ class Element extends Component {
 
   handleClick(e) {
     if(e.stopPropagation) e.stopPropagation();
-    console.log(e.target);
+
+    this.props.addElement(e.target.id, this.props.tool);
   }
 
   render() {
@@ -25,5 +28,21 @@ class Element extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    tool: state.tool
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    addElement: (parentId, tool) => {
+      dispatch(addElement(parentId, tool));
+    }
+  };
+};
+
+Element = connect(mapStateToProps, mapDispatchToProps)(Element);
 
 export default Element;
