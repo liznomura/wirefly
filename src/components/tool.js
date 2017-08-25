@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Tool = ({dataType, dragStart, dragEnd, height}) => {
+const Tool = ({dataType, handleOnClick}) => {
   return (
-    <div className="tool" draggable="true" onDragStart={dragStart} onDragEnd={dragEnd} data-type={dataType}/>
+    <div className="tool" data-type={dataType} onClick={handleOnClick}>{dataType}</div>
     )
 };
 

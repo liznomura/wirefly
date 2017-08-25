@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
 import Toolbar from '../Toolbar';
-import Canvas from '../Canvas';
+import DivBase from '../DivBase';
 
 class App extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
 
   render() {
     return (
-      <div className="container">
+      <div className="app">
         <Toolbar />
-        <Canvas />
+        <DivBase />
       </div>
     );
   }

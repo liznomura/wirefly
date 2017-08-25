@@ -1,33 +1,41 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Tool from '../../components/tool.js';
+import { setTool } from '../../actions';
 
 class Toolbar extends Component {
   constructor(props) {
     super(props);
 
-    this.handleDragStart = this.handleDragStart.bind(this);
-    this.handleDragEnd = this.handleDragEnd.bind(this);
+    this.handleOnClick = this.handleOnClick.bind(this);
   }
 
-  handleDragStart(e) {
-    e.target.style.opacity = '0.4';
-    e.dataTransfer.effectAllowed = 'copy';
-    e.dataTransfer.setData('text', e.target.dataset.type);
+  handleOnClick(e) {
+    this.props.setTool(e.target.dataset.type);
   }
 
-  handleDragEnd(e) {
-    e.target.style.opacity = '1';
+  render() {
+    return (
+      <div className="toolbar">
+      <Tool handleOnClick={this.handleOnClick} dataType="container" />
+      <Tool handleOnClick={this.handleOnClick} dataType="div" />
+      </div>
+      );
   }
-
-render() {
-  return (
-    <div className="toolbar" id="toolbar">
-    <Tool dataType="div" dragStart={this.handleDragStart} dragEnd={this.handleDragEnd} />
-    <Tool dataType="image" dragStart={this.handleDragStart} dragEnd={this.handleDragEnd} />
-    </div>
-    );
 }
 
-}
+const mapStateToProps = state => {
+  return {};
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setTool : tool => {
+      dispatch(setTool(tool));
+    }
+  };
+};
+
+Toolbar = connect(mapStateToProps, mapDispatchToProps)(Toolbar);
 
 export default Toolbar;

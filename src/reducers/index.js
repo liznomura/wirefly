@@ -1,57 +1,50 @@
-import { UPDATE_ROW_HEIGHT, ADD_CHILDREN } from '../actions';
+import {
+  ADD_CONTAINER,
+  ADD_DIV,
+  SET_TOOL,
+  ADD_CHILD,
+  addContainer,
+  addDiv,
+  setTool,
+  addChild
+} from '../actions';
 
 const initialState = {
-  container: {
-    width: '70%',
-    height: '100%'
+  tool: '',
+  page: {
+    width: '100%',
+    height: '100%',
+    properties: {}
   },
-  rows: [
-  {
-    name: 'header',
-    height: '',
-    children: []
-  },
-  {
-    name: 'body',
-    height: '',
-    children: []
-  },
-  {
-    name: 'footer',
-    height: '',
-    children: []
-  }
-  ]
+  containers: []
 };
 
 const wireflyReducer = (state = initialState, action) => {
   switch (action.type) {
-    case UPDATE_ROW_HEIGHT:
-    return Object.assign({}, state, { rows:
-      state.rows.map(row => {
-        if (row.name === action.name) {
-          return Object.assign({}, row, { height: action.height });
-        }
+    case ADD_CONTAINER:
+      return Object.assign({}, state, {
+        tool: '',
+        containers: [...state.containers, action.container]
+      });
 
-        return row;
-      })
-    });
+    case SET_TOOL:
+      return Object.assign({}, state, { tool: action.tool });
 
-    case ADD_CHILDREN:
-    return Object.assign({}, state, { rows:
-      state.rows.map(row => {
-        if (row.name === action.name) {
-          return Object.assign({}, row, {
-            children: [...row.children, action.child]
-          });
-        }
+    case ADD_DIV:
+      return Object.assign({}, state, {
+        containers: [...state.containers.map(container => {
+          if (container.id === action.parentId) {
+            return Object.assign({}, container, {
+              children: [...container.children, action.div]
+            });
+          }
 
-        return row;
-      })
-    });
+          return container;
+        })]
+      });
 
     default:
-    return state;
+      return state;
   }
 };
 
