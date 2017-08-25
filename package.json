@@ -9,7 +9,14 @@
     "react-redux": "^5.0.6",
     "react-scripts": "1.0.11",
     "redux": "^3.7.2",
-    "redux-devtools": "^3.4.0"
+    "redux-devtools": "^3.4.0",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "handlebars": "^4.0.10"
+  },
+  "devDependencies": {
+    "chai": "^4.1.1",
+    "mocha": "^3.5.0"
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/scss/ -o src/",

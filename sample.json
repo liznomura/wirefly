@@ -1,0 +1,32 @@
+{
+  "container": {
+    "z-index": 0,
+    "width": 600,
+    "height": 600
+  },
+  "children": [
+    {
+      "elementClass": "header",
+      "z-index": 1,
+      "width": 500,
+      "height": 80,
+      "margin": "30 auto",
+      "padding": 10,
+      "display": "block",
+      "id": 1,
+      "properties": {
+        "text": "Welcome"
+      }
+    },
+    {
+      "elementClass": "image",
+      "z-index": 2,
+      "width": 300,
+      "height": 200,
+      "x": 50,
+      "y": 400,
+      "id": 2,
+      "properties": {}
+    }
+  ]
+}
