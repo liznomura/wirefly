@@ -1,33 +1,21 @@
-export const ADD_CONTAINER = 'ADD_CONTAINER';
-export const ADD_DIV = 'ADD_DIV';
 export const SET_TOOL = 'SET_TOOL';
-export const ADD_CHILD = 'ADD_CHILD';
+export const ADD_ELEMENT = 'ADD_ELEMENT';
 
-let keyId = 0;
-
-export const addContainer = () => {
+let keyId = 1;
+export const setTool = tool => {
   return {
-    type: ADD_CONTAINER,
-    container: {
-      id: keyId++,
-      type: 'container',
-      width: '100%',
-      height: '20%',
-      properties: {
-        display: 'block'
-      },
-      children: []
-    }
+    type : SET_TOOL,
+    tool
   };
 };
 
-export const addDiv = (id) => {
+export const addElement = (parentId, tool) => {
   return {
-    type: ADD_DIV,
-    parentId: id,
-    div: {
+    type: ADD_ELEMENT,
+    parentId,
+    element: {
       id: keyId++,
-      type: 'div',
+      type: tool,
       width: '100%',
       height: '100%',
       properties: {
@@ -37,19 +25,3 @@ export const addDiv = (id) => {
     }
   };
 };
-
-export const setTool = tool => {
-  return {
-    type : SET_TOOL,
-    tool
-  };
-};
-
-export const addChild = () => {
-  // type: flex-child
-  // width
-  // height
-  // properties
-  // children
-};
-
