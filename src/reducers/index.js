@@ -3,14 +3,32 @@ import { SET_TOOL } from '../actions';
 const initialState = {
   tool: '',
   containers: [
-  {
-    id: 0,
-    type: 'page',
-    width: '100%',
-    height: '100%',
-    properties: {},
-    children: []
-  }
+    {
+      id: 0,
+      type: 'page',
+      width: '100%',
+      height: '100%',
+      properties: {},
+      children: [
+        {
+          id: 2,
+          type: 'container',
+          width: '100%',
+          height: '100%',
+          properties: {},
+          children: [
+            {
+              id: 3,
+              type: 'div',
+              width: '100%',
+              height: '100%',
+              properties: {},
+              children: []
+            }
+          ]
+        }
+      ]
+    }
   ]
 };
 

@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import getTreeNode from '../../helpers';
 
 class Canvas extends Component {
-  constructor() {
-    super();
-
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick(e) {
-  }
 
   render() {
+    let childNodes = this.props.containers.map(getTreeNode, this);
     return (
-      <div className="canvas" onClick={this.handleClick}>
+      <div className="canvas">
+      {childNodes}
       </div>
     );
   }
