@@ -16,12 +16,17 @@ PageTree.prototype.traversalBF = function(callback) {
 
     let currentTree = queue.dequeue();
 
+    let done;
+
     while(currentTree){
         for (let i = 0, length = currentTree.children.length; i < length; i++) {
             queue.enqueue(currentTree.children[i]);
         }
 
-        callback(currentTree);
+        if(callback(currentTree)) {
+          return;
+        }
+
         currentTree = queue.dequeue();
     }
 };
@@ -37,6 +42,7 @@ PageTree.prototype.add = function(elProps, toElId, traversal) {
         callback = function(element) {
             if (element.id === toElId) {
                 parent = element;
+                return true;
             }
         };
 
