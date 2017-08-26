@@ -1,5 +1,4 @@
 import { SET_TOOL, ADD_ELEMENT } from '../actions';
-import { normalize, schema } from 'normalizr';
 
 const initialState = {
   tool: '',
@@ -25,6 +24,22 @@ const initialState = {
               height: '100%',
               properties: {},
               children: []
+            },
+                        {
+              id: 31,
+              type: 'div',
+              width: '100%',
+              height: '100%',
+              properties: {},
+              children: []
+            },
+                                    {
+              id: 32,
+              type: 'div',
+              width: '100%',
+              height: '100%',
+              properties: {},
+              children: []
             }
           ]
         }
@@ -37,13 +52,7 @@ const wireflyReducer = (state = initialState, action) => {
 
   switch (action.type) {
     case ADD_ELEMENT:
-
-      const mySchema = { containers: [ container ] };
-      const normalData = normalize(state.containers, mySchema);
-
-      console.log(normalData);
-
-
+      console.log('add element', action.element.type);
       // return Object.assign({}, state, {
       //   tool: '',
       //   containers: [...state.containers, action.container]

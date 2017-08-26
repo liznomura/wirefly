@@ -17,42 +17,73 @@ body,
   background: pink; }
 
 .toolbar {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  width: 20%;
+  display: inline-block;
+  position: absolute;
+  left: -12rem;
+  text-transform: uppercase;
+  width: 12rem;
   height: 100%;
-  background: #f0f8ff;
-  border-right: 1px dotted #808080; }
+  background: #242423;
+  transition: left 0.2s; }
 
-.tool {
-  background: white;
-  box-sizing: content-box;
-  padding: 10px;
-  height: 50px; }
-  .tool:hover {
-    border: 1px solid #808080; }
+.showToolBtn {
+  position: absolute;
+  display: block;
+  vertical-align: middle;
+  margin: 0.9rem;
+  right: -6rem;
+  top: 0;
+  height: 4rem;
+  width: 4rem;
+  color: #f8faf6;
+  transition: color 0.1s; }
+  .showToolBtn:hover {
+    color: #f5cb5c; }
+
+.visible {
+  left: 0; }
+
+[class*='tool '] {
+  background: #f8faf6;
+  position: relative;
+  box-sizing: border-box;
+  color: #333533;
+  padding: 5px;
+  height: 30px;
+  width: 100%;
+  transition: color 0.2s ease-out; }
+  [class*='tool ']:hover {
+    color: #f5cb5c; }
 
 .canvas {
-  background: white;
+  vertical-align: middle;
+  background: #333533;
   height: 100%;
   width: 100%; }
 
-.page {
-  background: rgba(0, 0, 255, 0.1);
-  height: 100%;
-  width: 100%; }
+.pageEl {
+  display: flex;
+  background: #f8faf6;
+  margin-top: auto 0;
+  margin-left: 20%;
+  height: 90%;
+  width: 60rem; }
 
-.container {
+.containerEl {
+  display: flex;
+  justify-content: center;
   width: 100%;
   height: 20%;
-  background: #E7FBF8;
-  border: 1px dotted #808080;
-  box-sizing: content-box; }
+  background: transparent;
+  box-sizing: border-box; }
 
-.div {
+.divEl {
   width: 50%;
   height: 100%;
-  background: #FFCCCC;
-  border: 1px dotted #808080;
-  box-sizing: content-box; }
+  background: transparent;
+  border: 1px dotted #333533;
+  box-sizing: border-box; }
+
+li {
+  list-style-type: none;
+  list-style-position: outside; }

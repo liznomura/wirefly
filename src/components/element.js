@@ -22,7 +22,7 @@ class Element extends Component {
       childNodes = this.props.node.children.map(getTreeNode, this);
     }
     return (
-      <div className={this.props.node.type} id={this.props.node.id} onClick={this.handleClick}>
+      <div className={this.props.node.type + "El"} id={this.props.node.id} onClick={this.handleClick}>
         {childNodes}
       </div>
     );
