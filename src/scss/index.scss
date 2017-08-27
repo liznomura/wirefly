@@ -1,17 +1,15 @@
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
-$f: 'Source Sans Pro', sans-serif;
+@import url('https://fonts.googleapis.com/css?family=Varela+Round');
+$f: 'Varela Round', sans-serif;
 
-$yellow: #FFF3A2;
-$red: #F34A00;
-$blue: #00BDFF;
-$dark-grey: #86929B;
-$light-grey: #D8E0E7;
+$yellow: #ffdb00;
+$red: #f34a00;
+$blue: #00bdff;
+$dark-grey: #86929b;
+$light-grey: #d8e0e7;
 $blk: #242423;
 $offwhite: #f8faf6;
 
-
 $platinum: #e8eddf;
-$dkyellow: #f5cb5c;
 $ltblue: #e7fbf8;
 
 @mixin menuBtn {
@@ -52,12 +50,26 @@ body,
 .header {
   position: absolute;
   display: flex;
+  justify-content: flex-end;
+  align-items: center;
   height: 3rem;
   width: 100%;
   background: $blk;
   color: $platinum;
   text-transform: uppercase;
   box-sizing: content-box;
+
+  .logo {
+    height: 2rem;
+    width: 6.5rem;
+    margin-right: auto;
+    margin-left: 0.5rem;
+  }
+
+  .headerIcon {
+    height: 1.5rem;
+    margin-right: 1.2rem;
+  }
 }
 
 .toolbar {
@@ -88,8 +100,8 @@ body,
 }
 
 .showToolBtn {
-  color: $offwhite;
-  background: $red;
+  color: $blk;
+  background: $yellow;
   transition: all 0.3s;
   @include menuBtn;
 
@@ -108,18 +120,9 @@ body,
   background: $light-grey;
   @include menuBtn;
 
-  &::before  {
+  &::before {
     @include menuBefore;
   }
-}
-
-.test {
-  background: $dkyellow;
-  position: absolute;
-  height: 2rem;
-  width: 2rem;
-  right: -2rem;
-  top: 2rem;
 }
 
 .visible {
@@ -129,7 +132,6 @@ body,
     transform: rotate(45deg);
   }
 }
-
 
 [class*='tool '] {
   background: $offwhite;
@@ -151,8 +153,8 @@ body,
 .rightbar {
   position: absolute;
   right: 0;
-  top: 3rem;
-  width: 3rem;
+  top: 3.3rem;
+  width: 10rem;
   height: 100%;
   background: $blk;
 }
@@ -170,7 +172,8 @@ body,
   margin-top: 4rem;
   margin-left: 16rem;
   height: 90%;
-  width: 60rem;
+  width: 50rem;
+  box-shadow: 0.4rem 0.4rem 0.2rem $dark-grey;
 }
 
 .containerEl {

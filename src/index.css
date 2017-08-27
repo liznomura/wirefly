@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
+@import url("https://fonts.googleapis.com/css?family=Varela+Round");
 html,
 body,
 #root {
@@ -6,7 +6,7 @@ body,
   margin: 0;
   height: 100%;
   width: 100%;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Varela Round", sans-serif;
   overflow: hidden; }
 
 .app {
@@ -19,12 +19,22 @@ body,
 .header {
   position: absolute;
   display: flex;
+  justify-content: flex-end;
+  align-items: center;
   height: 3rem;
   width: 100%;
   background: #242423;
   color: #e8eddf;
   text-transform: uppercase;
   box-sizing: content-box; }
+  .header .logo {
+    height: 2rem;
+    width: 6.5rem;
+    margin-right: auto;
+    margin-left: 0.5rem; }
+  .header .headerIcon {
+    height: 1.5rem;
+    margin-right: 1.2rem; }
 
 .toolbar {
   display: inline-block;
@@ -52,8 +62,8 @@ body,
   cursor: pointer; }
 
 .showToolBtn {
-  color: #f8faf6;
-  background: #F34A00;
+  color: #242423;
+  background: #ffdb00;
   transition: all 0.3s;
   vertical-align: middle;
   height: 2rem;
@@ -72,7 +82,7 @@ body,
 
 .menuBtn {
   color: #242423;
-  background: #D8E0E7;
+  background: #d8e0e7;
   vertical-align: middle;
   height: 2rem;
   width: 100%;
@@ -85,14 +95,6 @@ body,
     content: '';
     background-size: 40%; }
 
-.test {
-  background: #f5cb5c;
-  position: absolute;
-  height: 2rem;
-  width: 2rem;
-  right: -2rem;
-  top: 2rem; }
-
 .visible {
   left: 0; }
   .visible .showToolBtn::before {
@@ -102,7 +104,7 @@ body,
   background: #f8faf6;
   position: relative;
   box-sizing: border-box;
-  color: #86929B;
+  color: #86929b;
   padding: 5px;
   height: 40px;
   width: 100%;
@@ -110,19 +112,19 @@ body,
   vertical-align: middle;
   cursor: pointer; }
   [class*='tool ']:hover {
-    color: #00BDFF; }
+    color: #00bdff; }
 
 .rightbar {
   position: absolute;
   right: 0;
-  top: 3rem;
-  width: 3rem;
+  top: 3.3rem;
+  width: 10rem;
   height: 100%;
   background: #242423; }
 
 .canvas {
   vertical-align: middle;
-  background: #D8E0E7;
+  background: #d8e0e7;
   height: 100%;
   width: 100%; }
 
@@ -132,7 +134,8 @@ body,
   margin-top: 4rem;
   margin-left: 16rem;
   height: 90%;
-  width: 60rem; }
+  width: 50rem;
+  box-shadow: 0.4rem 0.4rem 0.2rem #86929b; }
 
 .containerEl {
   display: flex;
@@ -146,7 +149,7 @@ body,
   width: 50%;
   height: 100%;
   background: transparent;
-  border: 1px dotted #86929B;
+  border: 1px dotted #86929b;
   box-sizing: border-box; }
 
 li {
