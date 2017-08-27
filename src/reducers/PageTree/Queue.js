@@ -1,14 +1,13 @@
-function Queue() {
-  this.queue = [];
+export default class Queue {
+  constructor() {
+    this.queue = [];
+  }
+
+  enqueue = function(item) {
+    this.queue.push(item);
+  }
+
+  dequeue = function() {
+    return this.queue.shift();
+  }
 }
-
-Queue.prototype.enqueue = function(item) {
-  this.queue.push(item)
-
-};
-
-Queue.prototype.dequeue = function() {
-  return this.queue.shift();
-};
-
-module.exports = Queue;

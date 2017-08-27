@@ -1,59 +1,60 @@
-const Queue = require('./Queue');
-const Element = require('./Element');
+import Queue from './Queue';
+import Element from './Element';
 
-function PageTree(rootEl) {
-  this.nextId = 0;
-  const el = new Element(this.generateId(), rootEl)
-  this._rootEl = el;
-}
+export default class PageTree {
+  constructor(root) {
+    this.nextId = 0;
+    this._root = new Element(this.generateId(), root);
+  }
 
-PageTree.prototype.generateId = function() { return this.nextId++; };
+  generateId() {
+    return this.nextId++;
+  }
 
-PageTree.prototype.traversalBF = function(callback) {
+  traversalBF(callback) {
     let queue = new Queue();
 
-    queue.enqueue(this._rootEl);
+    queue.enqueue(this._root);
 
     let currentTree = queue.dequeue();
 
-    let done;
+    while (currentTree) {
+      for (let i = 0, length = currentTree.children.length; i < length; i++) {
+        queue.enqueue(currentTree.children[i]);
+      }
 
-    while(currentTree){
-        for (let i = 0, length = currentTree.children.length; i < length; i++) {
-            queue.enqueue(currentTree.children[i]);
-        }
+      if (callback(currentTree)) {
+        return;
+      }
 
-        if(callback(currentTree)) {
-          return;
-        }
-
-        currentTree = queue.dequeue();
+      currentTree = queue.dequeue();
     }
-};
+  }
 
-PageTree.prototype.contains = function(callback, traversal) {
+  contains(callback, traversal) {
     traversal.call(this, callback);
-};
+  }
 
-PageTree.prototype.add = function(elProps, toElId, traversal) {
-    let id = this.generateId();
-    let child = new Element(id, elProps),
-        parent = null,
-        callback = function(element) {
-            if (element.id === toElId) {
-                parent = element;
-                return true;
-            }
-        };
+  add(elProps, toElId, traversal) {
+    let id,
+      child,
+      parent = null,
+      callback = function(element) {
+        if (element.id === toElId) {
+          parent = element;
+          return true;
+        }
+      };
 
     this.contains(callback, traversal);
 
     if (parent) {
-        parent.children.push(child);
-        child.parent = parent;
+      id = this.generateId();
+      child = new Element(id, elProps);
+      parent.children.push(child);
+      child.parent = parent;
     } else {
-        throw new Error('Cannot add node to a non-existent parent.');
+      throw new Error('Cannot add node to a non-existent parent.');
     }
-};
-
-module.exports = PageTree;
+  }
+}

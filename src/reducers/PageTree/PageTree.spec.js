@@ -1,13 +1,13 @@
-const PageTree = require('./index.js');
-const expect = require('chai').expect;
+import PageTree from './index';
+import { expect } from 'chai';
 
 describe('PageTree', function() {
   let Page;
-  let rootEl;
+  let root;
   let newEl;
 
   beforeEach(function() {
-    rootEl = {
+    root = {
       type: 'div',
       attr: {
         height: '100px',
@@ -21,31 +21,29 @@ describe('PageTree', function() {
       attr: {}
     };
 
-    Page = new PageTree(rootEl);
+    Page = new PageTree(root);
   });
 
-  it('PageTree.add() should add an element node to a given nodes children array', function() {
-    let rootId = Page._rootEl.id;
+  it('add() should add an element node to a given nodes children array', function() {
+    let rootId = Page._root.id;
     let expected = [
       {
         id: 1,
         properties: { ...newEl },
-        parent: { ...Page._rootEl },
+        parent: { ...Page._root },
         children: []
       },
       {
         id: 2,
         properties: { ...newEl },
-        parent: { ...Page._rootEl },
+        parent: { ...Page._root },
         children: []
       }
     ];
 
     Page.add(newEl, rootId, Page.traversalBF);
     Page.add(newEl, rootId, Page.traversalBF);
-
-    expect(Page._rootEl.children).to.deep.equal(expected);
+    expect(Page._root.children).to.deep.equal(expected);
   });
 
-  it('')
 });
