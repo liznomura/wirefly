@@ -28,9 +28,12 @@ class Toolbar extends Component {
     return (
       <div className={ this.state.isVisible ? "visible toolbar" : "toolbar" }>
       <ToolbarBtn toggleVis={this.toggleVis} />
+      <div className="test" />
       <Tool handleOnClick={this.handleOnClick} dataType="container" />
       <Tool handleOnClick={this.handleOnClick} dataType="div" />
       <Tool handleOnClick={this.handleOnClick} dataType="image" />
+      <Tool handleOnClick={this.handleOnClick} dataType="button" />
+      <Tool handleOnClick={this.handleOnClick} dataType="heading" />
       </div>
       );
   }

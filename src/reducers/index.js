@@ -16,32 +16,7 @@ const initialState = {
           width: '100%',
           height: '100%',
           properties: {},
-          children: [
-            {
-              id: 30,
-              type: 'div',
-              width: '100%',
-              height: '100%',
-              properties: {},
-              children: []
-            },
-                        {
-              id: 31,
-              type: 'div',
-              width: '100%',
-              height: '100%',
-              properties: {},
-              children: []
-            },
-                                    {
-              id: 32,
-              type: 'div',
-              width: '100%',
-              height: '100%',
-              properties: {},
-              children: []
-            }
-          ]
+          children: []
         }
       ]
     }
@@ -57,6 +32,7 @@ const wireflyReducer = (state = initialState, action) => {
       //   tool: '',
       //   containers: [...state.containers, action.container]
       // });
+      break;
 
     case SET_TOOL:
       return Object.assign({}, state, { tool: action.tool });
