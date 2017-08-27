@@ -1,7 +1,8 @@
-import { SET_TOOL, ADD_ELEMENT } from '../actions';
+import { SET_TOOL, ADD_ELEMENT, TOGGLE_VISIBILITY } from '../actions';
 
 const initialState = {
   tool: '',
+  isToolbarVisible: false,
   containers: [
     {
       id: 0,
@@ -36,6 +37,9 @@ const wireflyReducer = (state = initialState, action) => {
 
     case SET_TOOL:
       return Object.assign({}, state, { tool: action.tool });
+
+    case TOGGLE_VISIBILITY:
+      return Object.assign({}, state, { isToolbarVisible : !state.isToolbarVisible });
 
     default:
       return state;

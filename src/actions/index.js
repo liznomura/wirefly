@@ -1,5 +1,6 @@
 export const SET_TOOL = 'SET_TOOL';
 export const ADD_ELEMENT = 'ADD_ELEMENT';
+export const TOGGLE_VISIBILITY = 'TOGGLE_VISIBILITY';
 
 let keyId = 1;
 export const setTool = tool => {
@@ -23,5 +24,11 @@ export const addElement = (parentId, tool) => {
       },
       children: []
     }
+  };
+};
+
+export const toggleVisibility = () => {
+  return {
+    type: TOGGLE_VISIBILITY
   };
 };

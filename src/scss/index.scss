@@ -14,6 +14,22 @@ $platinum: #e8eddf;
 $dkyellow: #f5cb5c;
 $ltblue: #e7fbf8;
 
+@mixin menuBtn {
+  vertical-align: middle;
+  height: 2rem;
+  width: 100%;
+  border: none;
+  border-radius: 0 20% 20% 0;
+}
+
+@mixin menuBefore {
+  display: inline-block;
+  height: 2rem;
+  width: 2rem;
+  content: '';
+  background-size: 40%;
+}
+
 html,
 body,
 #root {
@@ -46,22 +62,43 @@ body,
   transition: left 0.2s;
 }
 
-.showToolBtn {
+.menu {
   position: absolute;
   display: block;
   vertical-align: middle;
-  border-radius: 0.1rem;
+  height: auto;
+  width: 2rem;
   right: -2rem;
   top: 0;
-  height: 2rem;
-  width: 2rem;
+  padding: 0;
+  color: $offwhite;
+  background: transparent;
+  cursor: pointer;
+}
+
+.showToolBtn {
   color: $offwhite;
   background: $red;
-  transition: color 0.1s;
-  cursor: pointer;
+  transition: all 0.3s;
+  @include menuBtn;
+
+  &::before {
+    background: url('./svg/add.svg') no-repeat center;
+    @include menuBefore;
+  }
 
   &:hover {
-    color: $blue;
+    width: 2.2rem;
+  }
+}
+
+.menuBtn {
+  color: $blk;
+  background: $light-grey;
+  @include menuBtn;
+
+  &::before  {
+    @include menuBefore;
   }
 }
 
@@ -76,6 +113,10 @@ body,
 
 .visible {
   left: 0;
+
+  & .showToolBtn::before {
+    transform: rotate(45deg);
+  }
 }
 
 

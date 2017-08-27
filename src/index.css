@@ -28,21 +28,52 @@ body,
   text-align: center;
   transition: left 0.2s; }
 
-.showToolBtn {
+.menu {
   position: absolute;
   display: block;
   vertical-align: middle;
-  border-radius: 0.1rem;
+  height: auto;
+  width: 2rem;
   right: -2rem;
   top: 0;
-  height: 2rem;
-  width: 2rem;
+  padding: 0;
+  color: #f8faf6;
+  background: transparent;
+  cursor: pointer; }
+
+.showToolBtn {
   color: #f8faf6;
   background: #F34A00;
-  transition: color 0.1s;
-  cursor: pointer; }
+  transition: all 0.3s;
+  vertical-align: middle;
+  height: 2rem;
+  width: 100%;
+  border: none;
+  border-radius: 0 20% 20% 0; }
+  .showToolBtn::before {
+    background: url("./svg/add.svg") no-repeat center;
+    display: inline-block;
+    height: 2rem;
+    width: 2rem;
+    content: '';
+    background-size: 40%; }
   .showToolBtn:hover {
-    color: #00BDFF; }
+    width: 2.2rem; }
+
+.menuBtn {
+  color: #242423;
+  background: #D8E0E7;
+  vertical-align: middle;
+  height: 2rem;
+  width: 100%;
+  border: none;
+  border-radius: 0 20% 20% 0; }
+  .menuBtn::before {
+    display: inline-block;
+    height: 2rem;
+    width: 2rem;
+    content: '';
+    background-size: 40%; }
 
 .test {
   background: #f5cb5c;
@@ -54,6 +85,8 @@ body,
 
 .visible {
   left: 0; }
+  .visible .showToolBtn::before {
+    transform: rotate(45deg); }
 
 [class*='tool '] {
   background: #f8faf6;
