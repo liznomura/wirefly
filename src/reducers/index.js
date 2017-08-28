@@ -1,49 +1,17 @@
-import { SET_TOOL, ADD_ELEMENT, TOGGLE_VISIBILITY } from '../actions';
+import { combineReducers } from 'redux';
+import wireflyReducer from './wirefly';
 
-const initialState = {
-  tool: '',
-  isToolbarVisible: false,
-  containers: [
-    {
-      id: 0,
-      type: 'page',
-      width: '100%',
-      height: '100%',
-      properties: {},
-      children: [
-        {
-          id: 29,
-          type: 'container',
-          width: '100%',
-          height: '100%',
-          properties: {},
-          children: []
-        }
-      ]
-    }
-  ]
-};
+import { ADD_ELEMENT, SET_TOOL, TOGGLE_VISIBILITY, UNDO_ACTION, REDO_ACTION } from '../actions';
+import undoable, { includeAction } from 'redux-undo';
 
-const wireflyReducer = (state = initialState, action) => {
+const rootReducer = combineReducers({
+  wirefly: undoable(wireflyReducer, {
+    filter: includeAction([SET_TOOL, TOGGLE_VISIBILITY, ADD_ELEMENT]),
+    limit: 10,
+    debug: true,
+    undoType: UNDO_ACTION,
+    redoType: REDO_ACTION
+  })
+});
 
-  switch (action.type) {
-    case ADD_ELEMENT:
-      console.log('add element', action.element.type);
-      // return Object.assign({}, state, {
-      //   tool: '',
-      //   containers: [...state.containers, action.container]
-      // });
-      break;
-
-    case SET_TOOL:
-      return Object.assign({}, state, { tool: action.tool });
-
-    case TOGGLE_VISIBILITY:
-      return Object.assign({}, state, { isToolbarVisible : !state.isToolbarVisible });
-
-    default:
-      return state;
-  }
-};
-
-export default wireflyReducer;
+export default rootReducer;

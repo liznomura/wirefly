@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { toggleVisibility } from '../../actions';
 import ToggleToolbarBtn from '../../components/toggle-toolbar-btn.js';
-import UndoBtn from '../../components/undo-btn.js';
 
 class Menu extends Component {
   constructor() {

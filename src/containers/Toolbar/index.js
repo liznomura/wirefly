@@ -31,7 +31,7 @@ class Toolbar extends Component {
 
 const mapStateToProps = state => {
   return {
-    isVisible: state.isToolbarVisible
+    isVisible: state.wirefly.present.isToolbarVisible
   };
 };
 
