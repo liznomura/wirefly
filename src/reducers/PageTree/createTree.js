@@ -1,11 +1,14 @@
-import PageTree from '../reducers/PageTree';
+import PageTree from './index';
 //nodes in tree taken from db do not have a parent
 //this function creates a tree with parent pointers
 export default function createTree(arrayItems) {
   const lookup = {};
   const rootItems = {};
+  let idCounter = 0;
 
   for(const item of arrayItems) {
+    idCounter++;
+
     const itemId = item.id;
     const parentId = item.parentId;
 
@@ -29,5 +32,5 @@ export default function createTree(arrayItems) {
     lookup[parentId].children.push(TreeItem);
   }
 
-  return rootItems;
+  return { nextId: idCounter, ...rootItems };
 };

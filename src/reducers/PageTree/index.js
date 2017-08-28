@@ -2,9 +2,14 @@ import Queue from './Queue';
 import Element from './Element';
 
 export default class PageTree {
-  constructor(root) {
-    this.nextId = 0;
-    this._root = new Element(this.generateId(), root);
+  constructor({root, tree}) {
+    if(root) {
+      this.nextId = 0;
+      this._root = new Element(this.generateId(), root);
+    } else {
+      this.nextId = tree.nextId;
+      this._root = tree._root;
+    }
   }
 
   generateId() {
@@ -40,7 +45,7 @@ export default class PageTree {
       child,
       parent = null,
       callback = function(element) {
-        if (element.id === toElId) {
+        if (element.data.id === toElId) {
           parent = element;
           return true;
         }

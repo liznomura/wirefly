@@ -1,4 +1,6 @@
 import PageTree from './index';
+import createTree from './createTree';
+import testArray from './arrayTree.json';
 import { expect } from 'chai';
 
 describe('PageTree', function() {
@@ -21,21 +23,25 @@ describe('PageTree', function() {
       attr: {}
     };
 
-    Page = new PageTree(root);
+    Page = new PageTree({ root });
   });
 
   it('add() should add an element node to a given nodes children array', function() {
-    let rootId = Page._root.id;
+    let rootId = Page._root.data.id;
     let expected = [
       {
-        id: 1,
-        properties: { ...newEl },
+        data: {
+          id: 1,
+          properties: { ...newEl }
+        },
         parent: { ...Page._root },
         children: []
       },
       {
-        id: 2,
-        properties: { ...newEl },
+        data: {
+          id: 2,
+          properties: { ...newEl }
+        },
         parent: { ...Page._root },
         children: []
       }
@@ -45,5 +51,35 @@ describe('PageTree', function() {
     Page.add(newEl, rootId, Page.traversalBF);
     expect(Page._root.children).to.deep.equal(expected);
   });
+});
 
+describe('createTree', function() {
+  let Page;
+  let Tree;
+
+  it('tree methods should still work after createTree made root', function() {
+    Tree = createTree(testArray);
+    let t = new PageTree({ tree: Tree });
+
+    t.add(
+      { type: 'div', attr: { height: '100px', width: '100px' } },
+      0,
+      t.traversalBF
+    );
+    expect(t._root.children[2]).to.deep.equal({
+      data: {
+        id: 5,
+        properties: {
+          type: 'div',
+          attr: {
+            height: '100px',
+            width: '100px'
+          }
+        }
+      },
+      children: [],
+
+      parent: t._root
+    });
+  });
 });
