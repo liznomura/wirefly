@@ -3,12 +3,13 @@ import { connect } from 'react-redux';
 import getTreeNode from '../../helpers';
 
 class Canvas extends Component {
-
   render() {
-    let childNodes = this.props.containers.map(getTreeNode, this);
+    let childNodes = this.props.pageTree._root.children.map(getTreeNode, this);
     return (
       <div className="canvas">
+      <div className="pageEl">
       {childNodes}
+      </div>
       </div>
     );
   }
@@ -17,7 +18,7 @@ class Canvas extends Component {
 const mapStateToProps = state => {
   return {
     tool: state.wirefly.present.tool,
-    containers: state.wirefly.present.containers
+    pageTree: state.wirefly.present.PageTree
   };
 };
 

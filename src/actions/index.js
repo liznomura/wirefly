@@ -5,7 +5,6 @@ export const TOGGLE_VISIBILITY = 'TOGGLE_VISIBILITY';
 export const UNDO_ACTION = 'UNDO_ACTION';
 export const REDO_ACTION = 'REDO_ACTION';
 
-let keyId = 1;
 export const setTool = tool => {
   return {
     type: SET_TOOL,
@@ -16,34 +15,33 @@ export const setTool = tool => {
 export const addElement = (parentId, tool) => {
   return {
     type: ADD_ELEMENT,
-    parentId,
     element: {
-      id: keyId++,
-      type: tool,
-      width: '100%',
-      height: '100%',
+      parentId,
       properties: {
-        display: 'block'
-      },
-      children: []
+        type: tool,
+        attr: {
+          width: '100%',
+          height: '100%',
+        }
+      }
     }
-  };
-};
+  }
+}
 
-export const toggleVisibility = () => {
-  return {
-    type: TOGGLE_VISIBILITY
+  export const toggleVisibility = () => {
+    return {
+      type: TOGGLE_VISIBILITY
+    };
   };
-};
 
-export const undo = () => {
-  return {
-    type: UNDO_ACTION
+  export const undo = () => {
+    return {
+      type: UNDO_ACTION
+    };
   };
-};
 
-export const redo = () => {
-  return {
-    type: REDO_ACTION
+  export const redo = () => {
+    return {
+      type: REDO_ACTION
+    };
   };
-};

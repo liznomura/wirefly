@@ -12,7 +12,7 @@ class Element extends Component {
 
   handleClick(e) {
     if(e.stopPropagation) e.stopPropagation();
-
+    console.log(this.props);
     this.props.addElement(e.target.id, this.props.tool);
   }
 
@@ -22,7 +22,7 @@ class Element extends Component {
       childNodes = this.props.node.children.map(getTreeNode, this);
     }
     return (
-      <div className={this.props.node.type + "El"} id={this.props.node.id} onClick={this.handleClick}>
+      <div className={this.props.node.data.properties.type + "El"} id={this.props.node.data.id} onClick={this.handleClick}>
         {childNodes}
       </div>
     );
@@ -31,7 +31,7 @@ class Element extends Component {
 
 const mapStateToProps = state => {
   return {
-    tool: state.tool
+    tool: state.wirefly.present.tool
   };
 };
 

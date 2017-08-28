@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import Header from '../Header';
 import Toolbar from '../Toolbar';
 import RightBar from '../RightBar';
