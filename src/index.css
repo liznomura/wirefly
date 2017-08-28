@@ -32,9 +32,16 @@ body,
     width: 6.5rem;
     margin-right: auto;
     margin-left: 0.5rem; }
-  .header .headerIcon {
-    height: 1.5rem;
-    margin-right: 1.2rem; }
+
+.icon {
+  height: 1.5rem;
+  margin-right: 1.2rem; }
+
+.rightBarIcon {
+  height: 1.5rem; }
+
+svg:hover .iconHover {
+  fill: #ffdb00; }
 
 .toolbar {
   display: inline-block;
@@ -62,8 +69,8 @@ body,
   cursor: pointer; }
 
 .showToolBtn {
-  color: #242423;
-  background: #ffdb00;
+  color: #f8faf6;
+  background: #f34a00;
   transition: all 0.3s;
   vertical-align: middle;
   height: 2rem;
@@ -116,6 +123,9 @@ body,
 
 .rightbar {
   position: absolute;
+  display: flex;
+  justify-content: space-around;
+  padding: 0.5rem;
   right: 0;
   top: 3.3rem;
   width: 10rem;

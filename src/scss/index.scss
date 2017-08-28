@@ -65,11 +65,19 @@ body,
     margin-right: auto;
     margin-left: 0.5rem;
   }
+}
 
-  .headerIcon {
-    height: 1.5rem;
-    margin-right: 1.2rem;
-  }
+.icon {
+  height: 1.5rem;
+  margin-right: 1.2rem;
+}
+
+.rightBarIcon {
+  height: 1.5rem;
+}
+
+svg:hover .iconHover {
+  fill: $yellow;
 }
 
 .toolbar {
@@ -100,8 +108,8 @@ body,
 }
 
 .showToolBtn {
-  color: $blk;
-  background: $yellow;
+  color: $offwhite;
+  background: $red;
   transition: all 0.3s;
   @include menuBtn;
 
@@ -152,6 +160,9 @@ body,
 
 .rightbar {
   position: absolute;
+  display: flex;
+  justify-content: space-around;
+  padding: 0.5rem;
   right: 0;
   top: 3.3rem;
   width: 10rem;
