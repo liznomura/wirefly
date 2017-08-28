@@ -1,8 +1,9 @@
 import React from 'react';
 
 const Tool = ({dataType, handleOnClick}) => {
+
   return (
-    <div className="tool" data-type={dataType} onClick={handleOnClick}>{dataType}</div>
+    <li className={'tool ' + dataType} data-type={dataType} onClick={handleOnClick}>{dataType}</li>
     )
 };
 

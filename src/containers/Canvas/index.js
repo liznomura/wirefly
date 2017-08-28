@@ -16,8 +16,8 @@ class Canvas extends Component {
 
 const mapStateToProps = state => {
   return {
-    tool: state.tool,
-    containers: state.containers
+    tool: state.wirefly.present.tool,
+    containers: state.wirefly.present.containers
   };
 };
 
