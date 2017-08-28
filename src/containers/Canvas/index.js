@@ -3,9 +3,8 @@ import { connect } from 'react-redux';
 import getTreeNode from '../../helpers';
 
 class Canvas extends Component {
-
   render() {
-    let childNodes = this.props.containers.map(getTreeNode, this);
+    let childNodes = this.props.pageTree._root.children.map(getTreeNode, this);
     return (
       <div className="canvas">
       {childNodes}
@@ -17,7 +16,7 @@ class Canvas extends Component {
 const mapStateToProps = state => {
   return {
     tool: state.tool,
-    containers: state.containers
+    pageTree: state.PageTree
   };
 };
 
