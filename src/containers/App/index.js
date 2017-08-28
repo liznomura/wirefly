@@ -14,22 +14,10 @@ class App extends Component {
         <Header />
         <Toolbar />
         <RightBar />
-        <Canvas containers={this.props.containers} />
+        <Canvas />
       </div>
     );
   }
 }
-
-const mapStateToProps = state => {
-  return {
-    containers: state.containers
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {};
-};
-
-App = connect(mapStateToProps, mapDispatchToProps)(App);
 
 export default App;
