@@ -2,8 +2,8 @@ import Queue from './Queue';
 import Element from './Element';
 
 export default class PageTree {
-  constructor({root, tree}) {
-    if(root) {
+  constructor({ root, tree }) {
+    if (root) {
       this.nextId = 0;
       this._root = new Element(this.generateId(), root);
     } else {
@@ -38,6 +38,24 @@ export default class PageTree {
 
   contains(callback, traversal) {
     traversal.call(this, callback);
+  }
+
+  modify(elProps, toElId, traversal) {
+    let el = null,
+      callback = function(element) {
+        if (element.data.id == toElId) {
+          el = element;
+          return true;
+        }
+      };
+
+    this.contains(callback, traversal);
+
+    if (el) {
+      el.data.properties.attr = elProps;
+    } else {
+      throw new Error('Cannot modify a non-existent node');
+    }
   }
 
   add(elProps, toElId, traversal) {
