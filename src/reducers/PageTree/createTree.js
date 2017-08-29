@@ -1,4 +1,3 @@
-import PageTree from './index';
 //nodes in tree taken from db do not have a parent
 //this function creates a tree with parent pointers
 export default function createTree(arrayItems) {
