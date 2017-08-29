@@ -3,11 +3,11 @@ export default class Queue {
     this.queue = [];
   }
 
-  enqueue = function(item) {
+  enqueue(item) {
     this.queue.push(item);
   }
 
-  dequeue = function() {
+  dequeue() {
     return this.queue.shift();
   }
 }
