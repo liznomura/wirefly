@@ -7,7 +7,9 @@ class Canvas extends Component {
     let childNodes = this.props.pageTree._root.children.map(getTreeNode, this);
     return (
       <div className="canvas">
+      <div className="pageEl">
       {childNodes}
+      </div>
       </div>
     );
   }
@@ -15,8 +17,8 @@ class Canvas extends Component {
 
 const mapStateToProps = state => {
   return {
-    tool: state.tool,
-    pageTree: state.PageTree
+    tool: state.wirefly.present.tool,
+    pageTree: state.wirefly.present.PageTree
   };
 };
 

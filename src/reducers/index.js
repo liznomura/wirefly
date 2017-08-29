@@ -1,25 +1,17 @@
-import { SET_TOOL, ADD_ELEMENT } from '../actions';
-import PageTree from './PageTree';
-import arrayTree from './PageTree/arrayTree.json';
-import createTree from './PageTree/createTree';
+import { combineReducers } from 'redux';
+import wireflyReducer from './wirefly';
 
-const Page = new PageTree({tree: createTree(arrayTree) });
+import { ADD_ELEMENT, SET_TOOL, TOGGLE_VISIBILITY, UNDO_ACTION, REDO_ACTION } from '../actions';
+import undoable, { includeAction } from 'redux-undo';
 
-const initialState = {
-  tool: '',
-  PageTree: Page
-};
+const rootReducer = combineReducers({
+  wirefly: undoable(wireflyReducer, {
+    filter: includeAction([SET_TOOL, TOGGLE_VISIBILITY, ADD_ELEMENT]),
+    limit: 10,
+    debug: true,
+    undoType: UNDO_ACTION,
+    redoType: REDO_ACTION
+  })
+});
 
-const wireflyReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case ADD_ELEMENT:
-
-    case SET_TOOL:
-      return Object.assign({}, state, { tool: action.tool });
-
-    default:
-      return state;
-  }
-};
-
-export default wireflyReducer;
+export default rootReducer;

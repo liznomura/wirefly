@@ -45,7 +45,7 @@ export default class PageTree {
       child,
       parent = null,
       callback = function(element) {
-        if (element.data.id === toElId) {
+        if (element.data.id == toElId) {
           parent = element;
           return true;
         }

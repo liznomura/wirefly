@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Tool from '../../components/tool.js';
 import { setTool } from '../../actions';
+import Menu from '../Menu';
 
 class Toolbar extends Component {
   constructor(props) {
@@ -16,21 +17,27 @@ class Toolbar extends Component {
 
   render() {
     return (
-      <div className="toolbar">
+      <div className={ this.props.isVisible ? "visible toolbar" : "toolbar" }>
+      <Menu />
       <Tool handleOnClick={this.handleOnClick} dataType="container" />
       <Tool handleOnClick={this.handleOnClick} dataType="div" />
+      <Tool handleOnClick={this.handleOnClick} dataType="image" />
+      <Tool handleOnClick={this.handleOnClick} dataType="button" />
+      <Tool handleOnClick={this.handleOnClick} dataType="heading" />
       </div>
       );
   }
 }
 
 const mapStateToProps = state => {
-  return {};
+  return {
+    isVisible: state.wirefly.present.isToolbarVisible
+  };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    setTool : tool => {
+    setTool: tool => {
       dispatch(setTool(tool));
     }
   };
