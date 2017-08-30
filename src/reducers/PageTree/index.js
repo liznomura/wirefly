@@ -2,8 +2,8 @@ import Queue from './Queue';
 import Element from './Element';
 
 export default class PageTree {
-  constructor({root, tree}) {
-    if(root) {
+  constructor({ root, tree }) {
+    if (root) {
       this.nextId = 0;
       this._root = new Element(this.generateId(), root);
     } else {
@@ -60,6 +60,32 @@ export default class PageTree {
       child.parent = parent;
     } else {
       throw new Error('Cannot add node to a non-existent parent.');
+    }
+  }
+
+  remove(elId, traversal) {
+    let parent,
+      index,
+      removedChild = null;
+    let callback = function(element) {
+      if (element.data.id == elId) {
+        parent = element.parent;
+        return true;
+      }
+    };
+
+    this.contains(callback, traversal);
+
+    if (parent) {
+      index = parent.children.findIndex(child => child.data.id == elId);
+
+      if (index) {
+        removedChild = parent.children.splice(1, index);
+      } else {
+        throw new Error('Node to remove does not exist');
+      }
+    } else {
+      throw new Error('Parent node does not exist');
     }
   }
 }
