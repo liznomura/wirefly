@@ -178,6 +178,14 @@ svg:hover .iconHover {
   width: 100%;
 }
 
+.element {
+  display: flex;
+  width: 100%;
+  background: transparent;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
 .pageEl {
   display: flex;
   background: $offwhite;
@@ -190,23 +198,13 @@ svg:hover .iconHover {
 }
 
 .containerEl {
-  display: flex;
-  width: 100%;
   height: 20%;
-  background: transparent;
   border: 2px solid $blk;
-  box-sizing: border-box;
-  padding: 10px;
 }
 
 .columnEl {
-  display: flex;
-  width: 100%;
   height: 100%;
-  background: transparent;
-  border: 1px solid $red;
-  box-sizing: border-box;
-  padding: 10px;
+  border: 1px solid $blue;
 }
 
 li {
@@ -215,18 +213,33 @@ li {
 }
 
 .tab {
-  border: 1px solid $blk;
-  height: 1.5rem;
-  padding: 0 0.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: absolute;
+  margin: -1.4rem -0.6rem;
+  height: 0.8rem;
   text-align: center;
+  font-size: 10px;
 
   .delete {
+    display: inline-block;
+    margin-left: 0.5rem;
+    height: 0.6rem;
+    width: 0.6rem;
     background: $red;
-    height: 1rem;
-    width: 1rem;
+    color: $offwhite;
+    text-align: center;
+    border: none;
+    border-radius: 50%;
+
 
     &:hover {
       cursor: pointer;
     }
   }
+}
+
+.showTab {
+  display: flex;
 }

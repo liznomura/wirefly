@@ -31,7 +31,7 @@ class Element extends Component {
     }
     return (
       <div
-        className={this.props.node.data.properties.type + 'El'}
+        className={this.props.node.data.properties.type + 'El' + ' ' + 'element'}
         id={this.props.node.data.id}
         onClick={this.handleClick}
       >
