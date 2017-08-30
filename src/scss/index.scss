@@ -78,6 +78,7 @@ body,
 
 svg:hover .iconHover {
   fill: $yellow;
+  cursor: pointer;
 }
 
 .toolbar {
@@ -189,18 +190,19 @@ svg:hover .iconHover {
 
 .containerEl {
   display: flex;
-  justify-content: center;
   width: 100%;
   height: 20%;
   background: transparent;
+  border: 2px solid $blk;
   box-sizing: border-box;
 }
 
-.divEl {
-  width: 50%;
+.columnEl {
+  display: flex;
+  width: 100%;
   height: 100%;
   background: transparent;
-  border: 1px dotted $dark-grey;
+  border: 1px solid $red;
   box-sizing: border-box;
 }
 
