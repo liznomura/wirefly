@@ -94,13 +94,11 @@ export default class PageTree {
 
     this.contains(callback, traversal);
 
-    console.log(elId);
-
     if (parent) {
       index = parent.children.findIndex(child => child.data.id == elId);
 
-      if (index) {
-        removedChild = parent.children.splice(1, index);
+      if (index >= 0) {
+        removedChild = parent.children.splice(index, 1);
       } else {
         throw new Error('Node to remove does not exist');
       }
