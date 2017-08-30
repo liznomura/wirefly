@@ -94,6 +94,8 @@ export default class PageTree {
 
     this.contains(callback, traversal);
 
+    console.log(elId);
+
     if (parent) {
       index = parent.children.findIndex(child => child.data.id == elId);
 
