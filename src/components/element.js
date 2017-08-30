@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import getTreeNode from '../helpers';
-import { addElement } from '../actions';
+import { addCheck } from '../actions';
 
 class Element extends Component {
   constructor(props) {
@@ -11,9 +11,10 @@ class Element extends Component {
   }
 
   handleClick(e) {
-    if(e.stopPropagation) e.stopPropagation();
-    console.log(this.props);
-    this.props.addElement(e.target.id, this.props.tool);
+    if (e.stopPropagation) e.stopPropagation();
+    if (this.props.tool) {
+      this.props.addCheck(e.target.id, this.props.tool);
+    }
   }
 
   render() {
@@ -22,7 +23,11 @@ class Element extends Component {
       childNodes = this.props.node.children.map(getTreeNode, this);
     }
     return (
-      <div className={this.props.node.data.properties.type + "El"} id={this.props.node.data.id} onClick={this.handleClick}>
+      <div
+        className={this.props.node.data.properties.type + 'El'}
+        id={this.props.node.data.id}
+        onClick={this.handleClick}
+      >
         {childNodes}
       </div>
     );
@@ -37,8 +42,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addElement: (parentId, tool) => {
-      dispatch(addElement(parentId, tool));
+    // addElement: (parentId, tool) => {
+    //   dispatch(addElement(parentId, tool));
+    // }
+    addCheck: (parentId, tool) => {
+      dispatch(addCheck(parentId, tool));
     }
   };
 };

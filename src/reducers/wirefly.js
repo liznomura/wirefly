@@ -1,4 +1,4 @@
-import { SET_TOOL, ADD_ELEMENT, TOGGLE_VISIBILITY } from '../actions';
+import { SET_TOOL, ADD_ELEMENT, ADD_ERR, TOGGLE_VISIBILITY } from '../actions';
 import _ from 'lodash';
 import PageTree from './PageTree';
 import arrayTree from './PageTree/arrayTree.json';
@@ -9,6 +9,7 @@ const Page = new PageTree({ tree: createTree(arrayTree) });
 const initialState = {
   tool: '',
   isToolbarVisible: false,
+  showError: '',
   PageTree: Page
 };
 
@@ -18,6 +19,9 @@ const wireflyReducer = (state = initialState, action) => {
       let newTree = _.cloneDeep(state.PageTree);
       newTree.add(action.element.properties, action.element.parentId, newTree.traversalBF);
       return Object.assign({}, state, { PageTree: newTree });
+
+    case ADD_ERR:
+      return Object.assign({}, state, { showError: action.errMsg });
 
     case SET_TOOL:
       return Object.assign({}, state, { tool: action.tool });

@@ -9,6 +9,7 @@ class Canvas extends Component {
       <div className="canvas">
       <div className="pageEl">
       {childNodes}
+      {console.log(this.props.showErr)}
       </div>
       </div>
     );
@@ -18,7 +19,8 @@ class Canvas extends Component {
 const mapStateToProps = state => {
   return {
     tool: state.wirefly.present.tool,
-    pageTree: state.wirefly.present.PageTree
+    pageTree: state.wirefly.present.PageTree,
+    showErr: state.wirefly.present.showError
   };
 };
 
