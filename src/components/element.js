@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import getTreeNode from '../helpers';
-import { addCheck } from '../actions';
+import { addCheck, deleteElement } from '../actions';
+import Tab from './hover-tab';
 
 class Element extends Component {
   constructor(props) {
     super(props);
 
     this.handleClick = this.handleClick.bind(this);
+    this.handleDel = this.handleDel.bind(this);
   }
 
   handleClick(e) {
@@ -15,6 +17,11 @@ class Element extends Component {
     if (this.props.tool) {
       this.props.addCheck(e.target.id, this.props.tool);
     }
+  }
+
+  handleDel(e) {
+    if(e.stopPropagation) e.stopPropagation();
+    this.props.deleteEl(e.target.dataset.id);
   }
 
   render() {
@@ -28,6 +35,7 @@ class Element extends Component {
         id={this.props.node.data.id}
         onClick={this.handleClick}
       >
+        <Tab elType={this.props.node.data.properties.type} elId={this.props.node.data.id} handleDel={this.handleDel}/>
         {childNodes}
       </div>
     );
@@ -42,11 +50,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    // addElement: (parentId, tool) => {
-    //   dispatch(addElement(parentId, tool));
-    // }
     addCheck: (parentId, tool) => {
       dispatch(addCheck(parentId, tool));
+    },
+    deleteEl: id => {
+      dispatch(deleteElement(id));
     }
   };
 };

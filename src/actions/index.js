@@ -2,6 +2,7 @@ export const SET_TOOL = 'SET_TOOL';
 export const ADD_ELEMENT = 'ADD_ELEMENT';
 export const ADD_ERR = 'ADD_ERR';
 export const TOGGLE_VISIBILITY = 'TOGGLE_VISIBILITY';
+export const DELETE_ELEMENT = 'DELETE_ELEMENT';
 
 export const UNDO_ACTION = 'UNDO_ACTION';
 export const REDO_ACTION = 'REDO_ACTION';
@@ -85,6 +86,13 @@ export const addElement = (parentId, tool) => {
 export const toggleVisibility = () => {
   return {
     type: TOGGLE_VISIBILITY
+  };
+};
+
+export const deleteElement = (id) => {
+  return {
+    type: DELETE_ELEMENT,
+    id
   };
 };
 
