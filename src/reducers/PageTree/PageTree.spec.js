@@ -49,8 +49,30 @@ describe('PageTree', function() {
 
     Page.add(newEl, rootId, Page.traversalBF);
     Page.add(newEl, rootId, Page.traversalBF);
+
     expect(Page._root.children).to.deep.equal(expected);
   });
+
+  it('remove() should remove an element node from its parent', function() {
+    let rootId = Page._root.data.id;
+    let expected = [
+      {
+        data: {
+          id: 1,
+          properties: { ...newEl }
+        },
+        parent: { ...Page._root },
+        children: []
+      }
+    ];
+
+    Page.add(newEl, rootId, Page.traversalBF);
+    Page.add(newEl, rootId, Page.traversalBF);
+
+    Page.remove(2, Page.traversalBF);
+
+    expect(Page._root.children).to.deep.equal(expected);
+  })
 });
 
 describe('createTree', function() {
