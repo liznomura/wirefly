@@ -20,7 +20,7 @@ class Toolbar extends Component {
       <div className={ this.props.isVisible ? "visible toolbar" : "toolbar" }>
       <Menu />
       <Tool handleOnClick={this.handleOnClick} dataType="container" />
-      <Tool handleOnClick={this.handleOnClick} dataType="div" />
+      <Tool handleOnClick={this.handleOnClick} dataType="column" />
       <Tool handleOnClick={this.handleOnClick} dataType="image" />
       <Tool handleOnClick={this.handleOnClick} dataType="button" />
       <Tool handleOnClick={this.handleOnClick} dataType="heading" />

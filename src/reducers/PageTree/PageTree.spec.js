@@ -10,7 +10,7 @@ describe('PageTree', function() {
 
   beforeEach(function() {
     root = {
-      type: 'div',
+      type: 'column',
       attr: {
         height: '100px',
         width: '100px',
@@ -19,7 +19,7 @@ describe('PageTree', function() {
     };
 
     newEl = {
-      type: 'div',
+      type: 'column',
       attr: {}
     };
 

@@ -41,7 +41,8 @@ body,
   height: 1.5rem; }
 
 svg:hover .iconHover {
-  fill: #ffdb00; }
+  fill: #ffdb00;
+  cursor: pointer; }
 
 .toolbar {
   display: inline-block;
@@ -149,17 +150,18 @@ svg:hover .iconHover {
 
 .containerEl {
   display: flex;
-  justify-content: center;
   width: 100%;
   height: 20%;
   background: transparent;
+  border: 2px solid #242423;
   box-sizing: border-box; }
 
-.divEl {
-  width: 50%;
+.columnEl {
+  display: flex;
+  width: 100%;
   height: 100%;
   background: transparent;
-  border: 1px dotted #86929b;
+  border: 1px solid #f34a00;
   box-sizing: border-box; }
 
 li {
